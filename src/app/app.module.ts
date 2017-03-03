@@ -3,12 +3,16 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { RecurringTransactionPage } from '../pages/recurringTransaction/recurringTransaction';
+import { CreateAccountPage } from '../pages/create-account/create-account';
+import { InterestCalculationPage } from '../pages/interest-calculation/interest-calculation';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    RecurringTransactionPage
+    RecurringTransactionPage,
+    CreateAccountPage,
+    InterestCalculationPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -16,7 +20,10 @@ import { RecurringTransactionPage } from '../pages/recurringTransaction/recurrin
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    CreateAccountPage,
+    InterestCalculationPage,
+    RecurringTransactionPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

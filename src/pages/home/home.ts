@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
-import { RecurringTransactionPage } from '../recurringTransaction/recurringTransaction'
+import { InterestCalculationPage } from '../interest-calculation/interest-calculation';
+import { CreateAccountPage } from '../create-account/create-account';
 
 @Component({
   selector: 'page-home',
@@ -9,20 +10,20 @@ import { RecurringTransactionPage } from '../recurringTransaction/recurringTrans
 })
 export class HomePage {
 
-  private account:any = {
-		id:'',
-		interestRate:'',
-		balance:'',
-    minBalance: '',
-	}
+  account: any = {
+    id: ''
+  }
 
   constructor(public navCtrl: NavController) {
     
   }
 
+  submit() {
+    this.navCtrl.push(InterestCalculationPage, this.account)
+  }
+
   createAccount() {
-    console.log(this.account);
-    this.navCtrl.push(RecurringTransactionPage);
+    this.navCtrl.push(CreateAccountPage);
   }
 
 }

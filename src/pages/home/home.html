@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Create Account
+      Enter Account ID
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,29 +9,14 @@
 <ion-content padding>
   <ion-card>
 		<ion-card-content>
-			<ion-list>
-				<ion-item>
-          <ion-label color="primary" floating>Account ID</ion-label>
-					<ion-input type="number" name="ID" [(ngModel)]="account.id" placeholder="Account ID"></ion-input>
-				</ion-item>
-
-				<ion-item>
-          <ion-label color="primary" floating>Interest Rate</ion-label>
-					<ion-input type="number" name="interestRate" [(ngModel)]="account.interestRate" placeholder="Interest Rate" required></ion-input>
-				</ion-item>
-
-				<ion-item>
-          <ion-label color="primary" floating>Balance</ion-label>
-					<ion-input type="number" name="balance" [(ngModel)]="account.balance" placeholder="Balance" required></ion-input>
-				</ion-item>
-
-        <ion-item>
-          <ion-label color="primary" floating>Minimum Balance</ion-label>
-					<ion-input type="number" name="minBalance" [(ngModel)]="account.minBalance" placeholder="Minimum Balance (if required)"></ion-input>
-				</ion-item>
-
-				<button type="button" ion-button bottom block (click)="createAccount()">Create Account</button>
-			</ion-list>
+      <ion-item>
+        <ion-label color="primary" floating>Account ID</ion-label>
+        <ion-input type="number" name="ID" [(ngModel)]="account.id" placeholder="Account ID"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button type="button" ion-button bottom block (click)="submit()">Submit</button>
+      </ion-item>
 		</ion-card-content>
   </ion-card>
+    <button type="button" ion-button bottom (click)="createAccount()">Create a New Account</button>
 </ion-content>
