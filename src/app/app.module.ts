@@ -5,6 +5,7 @@ import { HomePage } from '../pages/home/home';
 import { RecurringTransactionPage } from '../pages/recurringTransaction/recurringTransaction';
 import { CreateAccountPage } from '../pages/create-account/create-account';
 import { InterestCalculationPage } from '../pages/interest-calculation/interest-calculation';
+import { AccountService } from '../providers/account-service';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { InterestCalculationPage } from '../pages/interest-calculation/interest-
     InterestCalculationPage,
     RecurringTransactionPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
+    AccountService
+  ]
 })
 export class AppModule {}

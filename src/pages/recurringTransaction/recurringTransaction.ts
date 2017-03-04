@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { InterestCalculationPage } from '../interest-calculation/interest-calculation';
-import { TransactionPage } from '../../app/app.transaction/app.transaction'; 
+import { Transaction } from '../../app/app.transaction/app.transaction'; 
 
 
 @Component({
@@ -17,13 +17,13 @@ export class RecurringTransactionPage {
     minBalance: ''
 	}
 
-  transaction: TransactionPage = {
+  transaction: Transaction = {
     amount: null,
     frequency: null
   };
-  recurringTransactions : TransactionPage[]; 
+  recurringTransactions : Transaction[] = []; 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
     this.account = navParams.get('account');
   }
 
@@ -32,9 +32,28 @@ export class RecurringTransactionPage {
   }
 
   addTransaction() {
-    this.recurringTransactions.push(this.transaction);
-    this.transaction.amount = null;
-    this.transaction.frequency = null;
+    let prompt = this.alertCtrl.create({
+            title: 'Add Recurring Transaction',
+            inputs: [{
+                 name: 'amount',
+                 placeholder: 'Enter Amount',
+            },
+            {
+                 name: 'frequency',
+                 placeholder: 'Enter Frequency in Days',
+            }
+            ],
+            buttons: [
+                {text: 'Cancel'},
+                {
+                    text: 'Add',
+                    handler: data => {
+                        this.recurringTransactions.push(data);
+                    }
+                }
+            ]
+        });
+        prompt.present();
   }
 
   submit() {

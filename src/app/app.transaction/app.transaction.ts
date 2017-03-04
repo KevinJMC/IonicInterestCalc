@@ -1,5 +1,4 @@
-export interface TransactionPage{
-
+export interface Transaction{
     frequency : number; 
     amount : number; 
 }

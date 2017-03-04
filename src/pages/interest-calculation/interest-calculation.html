@@ -1,18 +1,78 @@
-<!--
-  Generated template for the InterestCalculation page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>InterestCalculation</ion-title>
+    <ion-title>Interest Calculation</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+        Account #{{account.id}}
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" floating>Interval</ion-label>
+          <ion-input type="number" name="interval" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" floating>Compounding Period</ion-label>
+          <ion-input type="number" name="period"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Principle Calculation Method
+    </ion-card-header>
+    <ion-card-content>
+    <ion-list radio-group [(ngModel)]="calculationMethod">
+      <ion-item>
+        <ion-label>Time of Credit</ion-label>
+        <ion-radio value="creditTime" color="black"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ex-Interest Date</ion-label>
+        <ion-radio value="exInterest"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Average</ion-label>
+        <ion-radio value="average"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Maximum</ion-label>
+        <ion-radio value="maximum"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Minimum</ion-label>
+        <ion-radio value="minimum"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Threshold Maximum</ion-label>
+        <ion-radio value="threshMax"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Threshold Minimum</ion-label>
+        <ion-radio value="threshMin"></ion-radio>
+      </ion-item>
+    </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <button ion-button icon-left left (click)="calculateSimpleInterest()">
+        <ion-icon name="ios-calculator"></ion-icon>
+        Simple Interest
+      </button>
+      <button ion-button icon-right>
+        Compound Interest
+        <ion-icon name="ios-calculator" right (click)="calculateCompoundInterest()"></ion-icon>
+      </button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>Interest Accrued</ion-card-header>
+    <ion-card-content>{{interest}}</ion-card-content>
+  </ion-card>
 </ion-content>

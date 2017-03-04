@@ -6,34 +6,18 @@
 
 
 <ion-content padding>
+  <button type="button" ion-button right (click)="addTransaction()">Add A Recurring Transaction</button>
   <ion-card>
     <ion-card-content>
       <ion-list>
-        <ion-item>
-          <ion-label color="primary" floating>Amount</ion-label>
-          <ion-input type="number" name="amount" [(ngModel)]="transaction.amount" placeholder="Amount"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label color="primary" floating>Frequency in Days</ion-label>
-          <ion-input type="number" name="frequencyInDays" [(ngModel)]="transaction.frequency" placeholder="Frequency of Recurring Transaction"></ion-input>
-        </ion-item>
-
-        <button type="button" ion-button right (click)="addTransaction()">Add Recurring Transaction</button>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <ion-card-content>
-      <ion-list>
-        <ion-item ng-if="recurringTransactions!=null" collection-repeat="transaction in recurringTransactions">
-          {{transaction}}
+        <ion-list-header>
+        Recurring Transactions
+        </ion-list-header>
+        <ion-item *ngFor="let transaction of recurringTransactions">
+          ${{transaction.amount}} every {{transaction.frequency}} days
         </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
-  <ion-card>
-    <ion-card-content>
-      <button type="button" ion-button block bottom click="submit()">Submit</button>
-    </ion-card-content>
-  </ion-card>
+<button type="button" ion-button block (click)="submit()">Submit</button>
 </ion-content>
